@@ -1,0 +1,45 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root,
+[data-theme] {
+  background: oklch(var(--b2));
+}
+
+body {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+.btn {
+  @apply shadow-md;
+}
+
+.btn.btn-ghost {
+  @apply shadow-none;
+}
+
+.slider {
+  @apply rounded-sm
+  h-4
+  [&::-webkit-slider-runnable-track]:rounded-sm 
+  [&::-webkit-slider-runnable-track]:bg-base-300
+  [&::-webkit-slider-runnable-track]:bg-opacity-30
+  [&::-webkit-slider-runnable-track]:h-4
+  [&::-webkit-slider-thumb]:h-6
+  [&::-webkit-slider-thumb]:w-4 
+  [&::-webkit-slider-thumb]:rounded-sm
+  [&::-webkit-slider-thumb]:bg-white;
+}
