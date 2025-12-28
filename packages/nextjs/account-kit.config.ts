@@ -1,7 +1,7 @@
 import { AlchemyAccountsUIConfig, cookieStorage, createConfig as createAccountKitConfig } from "@account-kit/react";
 import { alchemy, sepolia } from "@account-kit/infra";
 import scaffoldConfig from "./scaffold.config";
-// TODO: Re-introduce fhenix nitrogen once it is added to alchemy account-kit
+// TODO: Re-introduce luxfhe nitrogen once it is added to alchemy account-kit
 
 const accountKitUiConfig: AlchemyAccountsUIConfig = {
   illustrationStyle: "outline",

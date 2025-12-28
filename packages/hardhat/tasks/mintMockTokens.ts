@@ -22,11 +22,11 @@ const e6 = 10 * 10 ** 6;
 task("task:mintMockTokens")
   .addPositionalParam("address", "Wallet Address")
   .setAction(async function (taskArguments: TaskArguments, hre) {
-    const { fhenixjs, ethers, deployments } = hre;
+    const { luxfhejs, ethers, deployments } = hre;
     const [signer] = await ethers.getSigners();
 
     if ((await ethers.provider.getBalance(signer.address)).toString() === "0") {
-      await fhenixjs.getFunds(signer.address);
+      await luxfhejs.getFunds(signer.address);
     }
 
     console.log(`Minting mock fherc20 tokens for ${taskArguments.address}`);

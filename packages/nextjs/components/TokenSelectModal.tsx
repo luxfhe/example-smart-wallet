@@ -2,10 +2,10 @@
 "use client";
 
 import { EyeSlashIcon, EyeIcon } from "@heroicons/react/24/outline";
-import { processUnsealables } from "~~/utils/fhenix/unsealable";
+import { processUnsealables } from "~~/utils/luxfhe/unsealable";
 import { useDerivedTokens, DerivedTokenData, useTokensStore } from "~~/services/store/tokensStore";
 import { bigintFixed } from "~~/utils/scaffold-eth/bigint";
-import { UnsealableDisplay } from "./fhenix/UnsealableDisplay";
+import { UnsealableDisplay } from "./luxfhe/UnsealableDisplay";
 
 const modalId = "token-select-modal";
 

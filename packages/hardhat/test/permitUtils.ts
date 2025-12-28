@@ -7,7 +7,7 @@ import {
   PermitSigner,
   SealingKey,
   SupportedProvider,
-} from "fhenixjs";
+} from "luxfhejs";
 import { PermissionV2Struct } from "../typechain-types/contracts/Counter";
 
 export const hours = 60 * 60;
@@ -20,7 +20,7 @@ export const PermissionCategories = {
   ADMIN: 3,
 };
 
-export type FhenixJsPermitV2 = {
+export type LuxFHEJsPermitV2 = {
   contractAddress: string;
   sealingKey: SealingKey;
   signature: string;
@@ -29,7 +29,7 @@ export type FhenixJsPermitV2 = {
   issuer: string;
 };
 
-export const extractPermissionV2 = (permit: FhenixJsPermitV2): PermissionV2Struct => {
+export const extractPermissionV2 = (permit: LuxFHEJsPermitV2): PermissionV2Struct => {
   return {
     issuer: permit.issuer,
     permitId: permit.permitId,
@@ -83,7 +83,7 @@ export const generatePermitV2 = async (
   permitId: number | bigint,
   provider: SupportedProvider,
   customSigner?: PermitSigner,
-): Promise<FhenixJsPermitV2> => {
+): Promise<LuxFHEJsPermitV2> => {
   if (!provider) {
     throw new Error("Provider is undefined");
   }
@@ -123,7 +123,7 @@ export const generatePermitV2 = async (
     // This refers to the keys of the following types object.
     primaryType: "PermissionedV2",
     domain: {
-      name: "Fhenix Permission v2.0.0",
+      name: "LuxFHE Permission v2.0.0",
       version: "v2.0.0",
       chainId,
       verifyingContract: contract,
@@ -142,7 +142,7 @@ export const generatePermitV2 = async (
     msgParams.message,
   );
 
-  const permit: FhenixJsPermitV2 = {
+  const permit: LuxFHEJsPermitV2 = {
     contractAddress: contract,
     sealingKey: keypair,
     signature: msgSig,

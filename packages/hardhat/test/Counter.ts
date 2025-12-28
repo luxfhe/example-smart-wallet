@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { expect } from "chai";
-import hre, { ethers, fhenixjs } from "hardhat";
+import hre, { ethers, luxfhejs } from "hardhat";
 import { Counter, PermitV2 } from "../typechain-types";
 import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
 import { getTokensFromFaucet, unsealMockFheOpsSealed } from "./utils";
-import { days, extractPermissionV2, FhenixJsPermitV2, generatePermitV2 } from "./permitUtils";
+import { days, extractPermissionV2, LuxFHEJsPermitV2, generatePermitV2 } from "./permitUtils";
 import { PermissionV2Struct } from "../typechain-types/contracts/Counter";
 
 describe("Counter", function () {
@@ -17,7 +17,7 @@ describe("Counter", function () {
   let counterAddress: string;
   const counterProjectName = "COUNTER";
 
-  let signerCounterPermit: FhenixJsPermitV2;
+  let signerCounterPermit: LuxFHEJsPermitV2;
   let signerCounterPermission: PermissionV2Struct;
 
   before(async () => {
@@ -59,13 +59,13 @@ describe("Counter", function () {
 
       // Before sending the amount to count to the Counter contract
       // It must first be encrypted outside the contract (within this test / frontend)
-      const encToCount = await fhenixjs.encrypt_uint32(toCount);
+      const encToCount = await luxfhejs.encrypt_uint32(toCount);
 
       // Add to the counter
       await counter.connect(signer).add(encToCount);
 
       const sealedCountedAmount = await counter.connect(signer).getCounterPermitSealed(signerCounterPermission);
-      const unsealedCountedAmount = fhenixjs.unseal(counterAddress, sealedCountedAmount.data, signer.address);
+      const unsealedCountedAmount = luxfhejs.unseal(counterAddress, sealedCountedAmount.data, signer.address);
 
       expect(Number(unsealedCountedAmount) === toCount);
       expect(unsealedCountedAmount).to.equal(toCount, "The counted amount should increase by toCount");

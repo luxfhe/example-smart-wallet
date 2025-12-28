@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { MainnetFherc20s } from "~~/contracts/mainnetFherc20s";
 import { useTokensStore } from "~~/services/store/tokensStore";
-import { fetchTokenPrice } from "~~/utils/fhenix/fetchTokenPrice";
+import { fetchTokenPrice } from "~~/utils/LuxFHE/fetchTokenPrice";
 
 export const useInitializeTokenPrices = () => {
   const setTokenPrices = useTokensStore(state => state.setTokenPrices);

@@ -3734,10 +3734,10 @@ const deployedContracts = {
         transfer: "@openzeppelin/contracts/token/ERC20/ERC20.sol",
         transferFrom: "@openzeppelin/contracts/token/ERC20/ERC20.sol",
         checkPermissionSatisfies:
-          "@fhenixprotocol/contracts/access/PermissionedV2.sol",
-        eip712Domain: "@fhenixprotocol/contracts/access/PermissionedV2.sol",
-        project: "@fhenixprotocol/contracts/access/PermissionedV2.sol",
-        version: "@fhenixprotocol/contracts/access/PermissionedV2.sol",
+          "@luxfheprotocol/contracts/access/PermissionedV2.sol",
+        eip712Domain: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
+        project: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
+        version: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
       },
     },
     LINK: {
@@ -11409,7 +11409,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -12036,7 +12036,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -12471,7 +12471,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -13348,7 +13348,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -14225,7 +14225,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -15122,7 +15122,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -15981,7 +15981,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -16858,7 +16858,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -18761,7 +18761,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -19638,7 +19638,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -20515,7 +20515,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -21392,7 +21392,7 @@ const deployedContracts = {
           name: "PERMIT_V2",
           outputs: [
             {
-              internalType: "contract IFhenixPermitV2",
+              internalType: "contract ILuxFHEPermitV2",
               name: "",
               type: "address",
             },
@@ -25743,10 +25743,10 @@ const deployedContracts = {
         transfer: "@openzeppelin/contracts/token/ERC20/ERC20.sol",
         transferFrom: "@openzeppelin/contracts/token/ERC20/ERC20.sol",
         checkPermissionSatisfies:
-          "@fhenixprotocol/contracts/access/PermissionedV2.sol",
-        eip712Domain: "@fhenixprotocol/contracts/access/PermissionedV2.sol",
-        project: "@fhenixprotocol/contracts/access/PermissionedV2.sol",
-        version: "@fhenixprotocol/contracts/access/PermissionedV2.sol",
+          "@luxfheprotocol/contracts/access/PermissionedV2.sol",
+        eip712Domain: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
+        project: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
+        version: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
       },
     },
     LINK: {

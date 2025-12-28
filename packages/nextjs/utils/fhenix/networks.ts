@@ -1,47 +1,47 @@
 import { defineChain } from "viem";
 
-export const FHENIX_LOCAL_WEBSOCKETS_URL = "ws://127.0.0.1:42070";
+export const LuxFHE_LOCAL_WEBSOCKETS_URL = "ws://127.0.0.1:42070";
 
-// export const fhenixHelium = defineChain({});
+// export const luxfheHelium = defineChain({});
 //   id: 8008135,
-//   name: "Fhenix Helium",
+//   name: "LuxFHE Helium",
 //   network: "helium",
 //   nativeCurrency: { name: "tFHE", symbol: "tFHE", decimals: 18 },
 //   rpcUrls: {
 //     public: {
-//       http: ["https://api.helium.fhenix.zone"],
+//       http: ["https://api.helium.luxfhe.zone"],
 //     },
 //     default: {
-//       http: ["https://api.helium.fhenix.zone"],
+//       http: ["https://api.helium.luxfhe.zone"],
 //     },
 //   },
 //   blockExplorers: {
-//     default: { name: "Fhenix Explorer", url: "https://explorer.helium.fhenix.zone" },
+//     default: { name: "LuxFHE Explorer", url: "https://explorer.helium.luxfhe.zone" },
 //   },
 // });
 
-export const fhenixNitrogen = defineChain({
+export const luxfheNitrogen = defineChain({
   id: 8008148,
-  name: "Fhenix Nitrogen",
+  name: "LuxFHE Nitrogen",
   network: "nitrogen",
   nativeCurrency: { name: "tFHE", symbol: "tFHE", decimals: 18 },
   rpcUrls: {
     public: {
-      http: ["https://api.nitrogen.fhenix.zone"],
+      http: ["https://api.nitrogen.luxfhe.zone"],
     },
     default: {
-      http: ["https://api.nitrogen.fhenix.zone"],
+      http: ["https://api.nitrogen.luxfhe.zone"],
     },
   },
   blockExplorers: {
-    default: { name: "Fhenix Explorer", url: "https://explorer.nitrogen.fhenix.zone" },
+    default: { name: "LuxFHE Explorer", url: "https://explorer.nitrogen.luxfhe.zone" },
   },
 });
 
-export const fhenixLocal = defineChain({
+export const luxfheLocal = defineChain({
   id: 412346,
-  name: "Fhenix Local",
-  network: "fhenixLocal",
+  name: "LuxFHE Local",
+  network: "luxfheLocal",
   nativeCurrency: { name: "tFHE", symbol: "tFHE", decimals: 18 },
   rpcUrls: {
     public: {
@@ -52,6 +52,6 @@ export const fhenixLocal = defineChain({
     },
   },
   blockExplorers: {
-    default: { name: "Fhenix Local Explorer", url: "http://localhost:3000/blockexplorer" },
+    default: { name: "LuxFHE Local Explorer", url: "http://localhost:3000/blockexplorer" },
   },
 });

@@ -1,37 +1,37 @@
 import { useReadContracts } from "wagmi";
 import {
-  FhenixContractFunctionArgs,
-  FhenixMulticallReturnType,
-  UseFhenixReadContractsParameters,
-  UseFhenixReadContractsReturnType,
-} from "~~/utils/fhenix/multicall";
+  LuxFHEContractFunctionArgs,
+  LuxFHEMulticallReturnType,
+  UseLuxFHEReadContractsParameters,
+  UseLuxFHEReadContractsReturnType,
+} from "~~/utils/LuxFHE/multicall";
 import { useAccount } from "@account-kit/react";
-import { useFhenixPermit } from "~~/permits/hooks";
+import { useLuxFHEPermit } from "~~/permits/hooks";
 import { Abi, ContractFunctionName } from "viem";
 import { PermissionV2 } from "~~/permits/types";
 
 export const injectPermission = <
   abi extends Abi | readonly unknown[],
   functionName extends ContractFunctionName<abi>,
-  argsIn = FhenixContractFunctionArgs<abi, "pure" | "view", functionName, true>,
-  argsOut = FhenixContractFunctionArgs<abi, "pure" | "view", functionName, false>,
+  argsIn = LuxFHEContractFunctionArgs<abi, "pure" | "view", functionName, true>,
+  argsOut = LuxFHEContractFunctionArgs<abi, "pure" | "view", functionName, false>,
 >(
   args: argsIn | unknown | undefined,
   permission: PermissionV2 | undefined,
 ): argsOut | undefined => {
   if (args == null) return undefined;
-  return (args as any[]).map((arg: any) => (arg === "populate-fhenix-permission" ? permission : arg)) as argsOut;
+  return (args as any[]).map((arg: any) => (arg === "populate-LuxFHE-permission" ? permission : arg)) as argsOut;
 };
 
-export const useFhenixReadContracts = <
+export const useLuxFHEReadContracts = <
   const contracts extends readonly unknown[],
   allowFailure extends boolean = true,
-  selectData = FhenixMulticallReturnType<contracts, allowFailure>,
+  selectData = LuxFHEMulticallReturnType<contracts, allowFailure>,
 >(
-  parameters: UseFhenixReadContractsParameters<contracts, allowFailure, true>,
-): UseFhenixReadContractsReturnType<contracts, allowFailure, selectData> => {
+  parameters: UseLuxFHEReadContractsParameters<contracts, allowFailure, true>,
+): UseLuxFHEReadContractsReturnType<contracts, allowFailure, selectData> => {
   const { address } = useAccount({ type: "LightAccount" });
-  const permit = useFhenixPermit();
+  const permit = useLuxFHEPermit();
 
   const transformedContracts = parameters?.contracts?.map((contract: any) => {
     if (contract.args == null) return contract;
@@ -57,5 +57,5 @@ export const useFhenixReadContracts = <
       },
       ...parameters.query,
     },
-  }) as UseFhenixReadContractsReturnType<contracts, allowFailure, selectData>;
+  }) as UseLuxFHEReadContractsReturnType<contracts, allowFailure, selectData>;
 };

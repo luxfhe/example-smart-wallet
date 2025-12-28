@@ -1,9 +1,9 @@
-import { useFhenixReadContracts } from "./useFhenixReadContracts";
+import { useLuxFHEReadContracts } from "./useLuxFHEReadContracts";
 import { useDeployedContractInfo } from "../scaffold-eth";
 import { useEffect } from "react";
 import { TokenData, useTokensStore } from "~~/services/store/tokensStore";
-import { processUnsealables } from "~~/utils/fhenix/unsealable";
-import { useFhenixPermit } from "~~/permits/hooks";
+import { processUnsealables } from "~~/utils/LuxFHE/unsealable";
+import { useLuxFHEPermit } from "~~/permits/hooks";
 import { useAccount } from "@account-kit/react";
 
 const chunk = (a: any[], size: number) =>
@@ -14,12 +14,12 @@ export const useInitializeTokens = (fherc20Adds: string[]) => {
   const setTokens = useTokensStore(state => state.setTokens);
   const refetchKey = useTokensStore(state => state.refetchKey);
   const { address } = useAccount({ type: "LightAccount" });
-  const permit = useFhenixPermit();
+  const permit = useLuxFHEPermit();
 
   const { data: fherc20Contract } = useDeployedContractInfo("FHERC20");
   const fherc20Abi = fherc20Contract?.abi as NonNullable<typeof fherc20Contract>["abi"];
 
-  const { data, isLoading, refetch } = useFhenixReadContracts({
+  const { data, isLoading, refetch } = useLuxFHEReadContracts({
     contracts: fherc20Adds.flatMap(add => [
       {
         abi: fherc20Abi,
@@ -41,7 +41,7 @@ export const useInitializeTokens = (fherc20Adds: string[]) => {
         abi: fherc20Abi,
         address: add,
         functionName: "sealedBalanceOf",
-        args: ["populate-fhenix-permission"],
+        args: ["populate-LuxFHE-permission"],
       },
     ]),
   });

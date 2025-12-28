@@ -11,7 +11,7 @@ import {
   EncryptedUint64,
   EncryptedUint8,
   SealingKey,
-} from "fhenixjs";
+} from "luxfhejs";
 import { LiteralToPrimitive, Primitive } from "type-fest";
 
 /**

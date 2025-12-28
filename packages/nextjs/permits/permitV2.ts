@@ -12,7 +12,7 @@ import {
   SerializedPermitV2,
 } from "./types";
 import { FullyFormedPermitV2Validator, PermitV2ParamsValidator } from "./permitV2.z";
-import { GenerateSealingKey, SealingKey } from "fhenixjs";
+import { GenerateSealingKey, SealingKey } from "luxfhejs";
 import { getAddress, keccak256, toHex, zeroAddress } from "viem";
 import {
   getSignatureDomain,
@@ -304,7 +304,7 @@ export class PermitV2 implements PermitV2Interface {
   };
 
   /**
-   * Use the privateKey of `permit.sealingPair` to unseal `ciphertext` returned from the Fhenix chain
+   * Use the privateKey of `permit.sealingPair` to unseal `ciphertext` returned from the LuxFHE chain
    */
   unsealCiphertext = (ciphertext: string): bigint => {
     // NOTE: the returned type is currently a stringified number

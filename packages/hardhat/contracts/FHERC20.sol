@@ -5,14 +5,14 @@ pragma solidity >=0.8.19 <0.9.0;
 import "@openzeppelin/contracts/utils/Strings.sol";
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import { IFHERC20 } from "./IFHERC20.sol";
-import { PermissionedV2, PermissionV2 } from "@fhenixprotocol/contracts/access/PermissionedV2.sol";
-import { SealedUint } from "@fhenixprotocol/contracts/FHE.sol";
+import { PermissionedV2, PermissionV2 } from "@luxfhe/contracts/access/PermissionedV2.sol";
+import { SealedUint } from "@luxfhe/contracts/FHE.sol";
 
 /**
  * Version of the FHERC20 able to be deployed on non-FHE chains
  * All FHE operations and variables have been replaced with cleartext variables
  * Used to test Smart Wallet PermitV2s on sepolia while waiting for Alchemy's
- *   smart wallet infrastructure to be deployed on Fhenix Nitrogen testnet
+ *   smart wallet infrastructure to be deployed on LuxFHE Nitrogen testnet
  */
 contract FHERC20 is IFHERC20, ERC20, PermissionedV2 {
 	// A mapping from address to an encrypted balance.

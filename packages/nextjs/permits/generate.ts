@@ -1,6 +1,6 @@
-import { EIP712Message } from "fhenixjs";
+import { EIP712Message } from "luxfhejs";
 import { PermissionV2 } from "./types";
-import { EIP712Types } from "fhenixjs";
+import { EIP712Types } from "luxfhejs";
 import { zeroAddress } from "viem";
 
 const PermitV2SignatureAllFields = [
@@ -63,7 +63,7 @@ export const getSignatureTypesAndMessage = <T extends PermitV2SignatureFieldOpti
 };
 
 export const getSignatureDomain = (chainId: string) => ({
-  name: "Fhenix Permission v2.0.0",
+  name: "LuxFHE Permission v2.0.0",
   version: "v2.0.0",
   chainId: parseInt(chainId),
   verifyingContract: zeroAddress,

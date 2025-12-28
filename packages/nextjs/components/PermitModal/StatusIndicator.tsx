@@ -1,10 +1,10 @@
 "use client";
 
-import { useFhenixPermit } from "~~/permits/hooks";
+import { useLuxFHEPermit } from "~~/permits/hooks";
 import { getTimestamp } from "./utils";
 
-const useFhenixPermitStatus = () => {
-  const permit = useFhenixPermit();
+const useLuxFHEPermitStatus = () => {
+  const permit = useLuxFHEPermit();
   const currentTimestamp = getTimestamp();
   const isExpired = permit == null ? false : permit.expiration <= currentTimestamp;
 
@@ -14,7 +14,7 @@ const useFhenixPermitStatus = () => {
 };
 
 export const PermitV2StatusIndicator = () => {
-  const status = useFhenixPermitStatus();
+  const status = useLuxFHEPermitStatus();
   const bgColor =
     status === "active"
       ? "bg-bg-surface-success"
@@ -26,7 +26,7 @@ export const PermitV2StatusIndicator = () => {
 };
 
 const PermitV2StatusText = () => {
-  const status = useFhenixPermitStatus();
+  const status = useLuxFHEPermitStatus();
 
   return (
     <div className="text-sm">

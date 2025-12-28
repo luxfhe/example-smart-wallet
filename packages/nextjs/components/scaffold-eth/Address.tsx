@@ -10,7 +10,7 @@ import { CheckCircleIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outl
 import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
-import { fhenixLocal } from "~~/utils/fhenix/networks";
+import { luxfheLocal } from "~~/utils/luxfhe/networks";
 
 type AddressProps = {
   address?: AddressType;
@@ -101,7 +101,7 @@ export const Address = ({ address, disableAddressLink, format, size = "base" }: 
       </div>
       {disableAddressLink ? (
         <span className={`ml-1.5 text-${size} font-normal`}>{displayAddress}</span>
-      ) : targetNetwork.id === fhenixLocal.id ? (
+      ) : targetNetwork.id === luxfheLocal.id ? (
         <span className={`ml-1.5 text-${size} font-normal`}>
           <Link href={blockExplorerAddressLink}>{displayAddress}</Link>
         </span>
