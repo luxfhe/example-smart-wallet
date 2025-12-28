@@ -2,7 +2,7 @@
 
 import { ArrowDownTrayIcon, ArrowUpTrayIcon } from "@heroicons/react/24/outline";
 import React from "react";
-import { useFhenixActivePermitHash, useFhenixAllPermits } from "~~/permits/hooks";
+import { useLuxFHEActivePermitHash, useLuxFHEAllPermits } from "~~/permits/hooks";
 import { PermitV2 } from "~~/permits/permitV2";
 import { usePermitModalFocusedPermitHash, usePermitSatisfiesRequirements } from "~~/services/store/permitModalStore";
 import truncateAddress from "~~/utils/truncate-address";
@@ -73,8 +73,8 @@ export const PermitV2ModalSelect = () => {
   // Each permit row has buttons <expand, use>
   // Expand opens sub page with action buttons <back, use>
 
-  const permits = useFhenixAllPermits();
-  const activePermitHash = useFhenixActivePermitHash();
+  const permits = useLuxFHEAllPermits();
+  const activePermitHash = useLuxFHEActivePermitHash();
 
   return (
     <>

@@ -36,12 +36,12 @@ export const PermitV2Modal = () => {
         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={() => setOpen(false)}>
           ✕
         </button>
-        <h3 className="font-bold text-lg">Fhenix Permits</h3>
+        <h3 className="font-bold text-lg">LuxFHE Permits</h3>
         <div className="text-sm">
-          Fhenix Permits grant private access to your encrypted on-chain data. Read more about Permits{" "}
+          LuxFHE Permits grant private access to your encrypted on-chain data. Read more about Permits{" "}
           <a
             className="btn btn-sm btn-link !shadow-none p-0"
-            href="https://docs.fhenix.zone/docs/devdocs/FhenixJS/Permits"
+            href="https://docs.luxfhe.zone/docs/devdocs/LuxFHEJS/Permits"
           >
             in the Docs
           </a>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useFhenixPermitWithHash } from "~~/permits/hooks";
+import { useLuxFHEPermitWithHash } from "~~/permits/hooks";
 import { usePermitModalFocusedPermitHash } from "~~/services/store/permitModalStore";
 import {
   PermitAccessDisplayRow,
@@ -33,7 +33,7 @@ const NameRow: React.FC<{ permit: PermitV2 }> = ({ permit }) => {
 
 export const PermitV2ModalDetails = () => {
   const { focusedPermitHash } = usePermitModalFocusedPermitHash();
-  const permit = useFhenixPermitWithHash(focusedPermitHash);
+  const permit = useLuxFHEPermitWithHash(focusedPermitHash);
 
   if (permit == null) {
     return <div>PERMIT NOT FOUND</div>;

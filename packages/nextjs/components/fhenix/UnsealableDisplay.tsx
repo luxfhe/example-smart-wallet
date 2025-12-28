@@ -3,7 +3,7 @@
 import { useAccount } from "@account-kit/react";
 import React from "react";
 import { usePermitModalOpen } from "~~/services/store/permitModalStore";
-import { processUnsealables, Unsealable, Unsealed, UnsealedArray } from "~~/utils/fhenix/unsealable";
+import { processUnsealables, Unsealable, Unsealed, UnsealedArray } from "~~/utils/luxfhe/unsealable";
 
 type UnsealableDisplayBaseProps = {
   nullish?: boolean;

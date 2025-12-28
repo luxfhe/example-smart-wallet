@@ -3,7 +3,7 @@ import { permitsStore } from "./store";
 import { PermitV2 } from "./permitV2";
 import { useAccount } from "@account-kit/react";
 
-export const useFhenixPermit = () => {
+export const useLuxFHEPermit = () => {
   const { address } = useAccount({ type: "LightAccount" });
 
   return useStore(permitsStore, state => {
@@ -19,7 +19,7 @@ export const useFhenixPermit = () => {
   });
 };
 
-export const useFhenixPermitWithHash = (hash: string | undefined) => {
+export const useLuxFHEPermitWithHash = (hash: string | undefined) => {
   const { address } = useAccount({ type: "LightAccount" });
 
   return useStore(permitsStore, state => {
@@ -33,7 +33,7 @@ export const useFhenixPermitWithHash = (hash: string | undefined) => {
   });
 };
 
-export const useFhenixActivePermitHash = () => {
+export const useLuxFHEActivePermitHash = () => {
   const { address } = useAccount({ type: "LightAccount" });
 
   return useStore(permitsStore, state => {
@@ -43,7 +43,7 @@ export const useFhenixActivePermitHash = () => {
   });
 };
 
-export const useFhenixAllPermits = () => {
+export const useLuxFHEAllPermits = () => {
   const { address } = useAccount({ type: "LightAccount" });
 
   return useStore(permitsStore, state => {

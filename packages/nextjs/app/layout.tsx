@@ -10,7 +10,7 @@ import { headers } from "next/headers";
 
 export const metadata = getMetadata({
   title: "Smart Wallet POC",
-  description: "Fhenix confidential data using AA",
+  description: "LuxFHE confidential data using AA",
 });
 
 const robotoMono = Roboto_Mono({

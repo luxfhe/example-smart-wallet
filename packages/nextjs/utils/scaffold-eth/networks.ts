@@ -1,6 +1,6 @@
 import * as chains from "viem/chains";
 import scaffoldConfig from "~~/scaffold.config";
-import { fhenixNitrogen, fhenixLocal } from "../fhenix/networks";
+import { luxfheNitrogen, luxfheLocal } from "../luxfhe/networks";
 
 type ChainAttributes = {
   // color | [lightThemeColor, darkThemeColor]
@@ -86,10 +86,10 @@ export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
   // [chains.scrollSepolia.id]: {
   //   color: "#fbebd4",
   // },
-  [fhenixNitrogen.id]: {
+  [luxfheNitrogen.id]: {
     color: "#32373c",
   },
-  [fhenixLocal.id]: {
+  [luxfheLocal.id]: {
     color: "#32373c",
   },
 };
@@ -125,7 +125,7 @@ export function getBlockExplorerTxLink(chainId: number, txnHash: string) {
  */
 export function getBlockExplorerAddressLink(network: chains.Chain, address: string) {
   const blockExplorerBaseURL = network.blockExplorers?.default?.url;
-  if (network.id === fhenixLocal.id) {
+  if (network.id === luxfheLocal.id) {
     return `/blockexplorer/address/${address}`;
   }
 

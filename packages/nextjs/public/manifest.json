@@ -1,5 +1,5 @@
 {
-  "name": "Fhenix Smart Wallet POC",
-  "description": "The fhenix encrypting / decrypting portal",
+  "name": "luxfhe Smart Wallet POC",
+  "description": "The luxfhe encrypting / decrypting portal",
   "iconPath": "logo.svg"
 }

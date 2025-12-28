@@ -1,11 +1,11 @@
 "use client";
 
 import { useAccount } from "@account-kit/react";
-import { useFhenixPermit } from "~~/permits/hooks";
+import { useLuxFHEPermit } from "~~/permits/hooks";
 
 export const ConnectedAccountAndPermitHeader = () => {
   const { address } = useAccount({ type: "LightAccount" });
-  const permit = useFhenixPermit();
+  const permit = useLuxFHEPermit();
   const isOverriddenByPermit = permit != null && permit.issuer !== address;
   return (
     <div className="flex flex-col mb-16">

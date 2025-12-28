@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import hre, { ethers, fhenixjs } from "hardhat";
+import hre, { ethers, luxfhejs } from "hardhat";
 import { time } from "@nomicfoundation/hardhat-network-helpers";
 import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
 import {
@@ -94,8 +94,8 @@ describe("PermitV2", function () {
 
     await permitV2.connect(bob).createNewPermit("BobPermit", 30 * days, false, [], [CounterProjectName]);
 
-    await counter1.connect(bob).add(await fhenixjs.encrypt_uint32(5));
-    await counter2.connect(bob).add(await fhenixjs.encrypt_uint32(3));
+    await counter1.connect(bob).add(await luxfhejs.encrypt_uint32(5));
+    await counter2.connect(bob).add(await luxfhejs.encrypt_uint32(3));
 
     expect(await counter1.getCounter(bob.address)).to.eq(5, "Bob's counter1 value should be added");
     expect(await counter2.getCounter(bob.address)).to.eq(3, "Bob's counter2 value should be added");
@@ -124,8 +124,8 @@ describe("PermitV2", function () {
 
     await permitV2.connect(bob).createNewPermit("BobPermit", 30 * days, true, [counter1Address], []);
 
-    await counter1.connect(bob).add(await fhenixjs.encrypt_uint32(5));
-    await counter2.connect(bob).add(await fhenixjs.encrypt_uint32(3));
+    await counter1.connect(bob).add(await luxfhejs.encrypt_uint32(5));
+    await counter2.connect(bob).add(await luxfhejs.encrypt_uint32(3));
 
     expect(await counter1.getCounter(bob.address)).to.eq(5, "Bob's counter1 value should be added");
     expect(await counter2.getCounter(bob.address)).to.eq(3, "Bob's counter2 value should be added");
@@ -147,7 +147,7 @@ describe("PermitV2", function () {
 
     await permitV2.connect(bob).createNewPermit("BobPermit", 30 * days, false, [], [CounterProjectName]);
 
-    await counter1.connect(bob).add(await fhenixjs.encrypt_uint32(5));
+    await counter1.connect(bob).add(await luxfhejs.encrypt_uint32(5));
 
     // Single permission for multiple contracts
     const permit = await generatePermitV2(permitV2Address, bob.address, permitId, ethers.provider, bob);
@@ -171,7 +171,7 @@ describe("PermitV2", function () {
     const bobPermit = await permitV2.getPermitInfo(permitId);
     const expiration = bobPermit.expiresAt + 1n;
 
-    await counter1.connect(bob).add(await fhenixjs.encrypt_uint32(5));
+    await counter1.connect(bob).add(await luxfhejs.encrypt_uint32(5));
 
     // Single permission for multiple contracts
     const permit = await generatePermitV2(permitV2Address, bob.address, permitId, ethers.provider, bob);
@@ -193,8 +193,8 @@ describe("PermitV2", function () {
 
     await permitV2.connect(bob).createNewPermit("BobPermit", 30 * days, false, [], [CounterProjectName]);
 
-    await counter1.connect(bob).add(await fhenixjs.encrypt_uint32(5));
-    await counter2.connect(bob).add(await fhenixjs.encrypt_uint32(3));
+    await counter1.connect(bob).add(await luxfhejs.encrypt_uint32(5));
+    await counter2.connect(bob).add(await luxfhejs.encrypt_uint32(3));
 
     permitV2.connect(bob).transferFrom(bob.address, ada.address, permitId);
 

@@ -10,14 +10,14 @@ import {
   webSocket,
 } from "viem";
 import { decodeTransactionData } from "~~/utils/scaffold-eth";
-import { FHENIX_LOCAL_WEBSOCKETS_URL, fhenixLocal } from "~~/utils/fhenix/networks";
+import { LuxFHE_LOCAL_WEBSOCKETS_URL, luxfheLocal } from "~~/utils/luxfhe/networks";
 
 const BLOCKS_PER_PAGE = 20;
 
 export const testClient = createTestClient({
-  chain: fhenixLocal,
+  chain: luxfheLocal,
   mode: "hardhat",
-  transport: webSocket(FHENIX_LOCAL_WEBSOCKETS_URL),
+  transport: webSocket(LuxFHE_LOCAL_WEBSOCKETS_URL),
 })
   .extend(publicActions)
   .extend(walletActions);

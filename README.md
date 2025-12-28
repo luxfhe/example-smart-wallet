@@ -1,10 +1,10 @@
-# Fhenix Smart Wallet POC
+# LuxFHE Smart Wallet POC
 
 url: https://smart-wallet-poc-nine.vercel.app/
 
-View your confidential balances using an alchemy LightAccount smart wallet. Built using the new Fhenix Permit V2 system (not provided by fhenix.js) on top of scaffold-eth.
+View your confidential balances using an alchemy LightAccount smart wallet. Built using the new LuxFHE Permit V2 system (not provided by luxfhe.js) on top of scaffold-eth.
 
-! NOTE: The mock tokens are deployed on Sepolia, and don't use FHE operations for the encrypted data. This will be fixed when the alchemy account-kit contracts have been deployed on Fhenix Nitrogen. See [FHERC20.sol](packages/hardhat/contracts/FHERC20.sol) for more.
+! NOTE: The mock tokens are deployed on Sepolia, and don't use FHE operations for the encrypted data. This will be fixed when the alchemy account-kit contracts have been deployed on LuxFHE Nitrogen. See [FHERC20.sol](packages/hardhat/contracts/FHERC20.sol) for more.
 
 ! NOTE: Logging in with an EOA does not work, the existing rainbowkit connection logic has been removed, only smart wallets will work.
 
@@ -34,7 +34,7 @@ Task List
   - [x] Oauth (Google)
   - [x] EOA
 - [x] UI for login / logout
-- [x] Add PermitV2 class from fhenix.js PermitV2 PR
+- [x] Add PermitV2 class from luxfhe.js PermitV2 PR
 - [x] Sign PermitV2 with smart wallet
 - [x] Deploy Mock FHERC20s with encryption removed on Sepolia
 - [x] Fetch smart wallet data from Sepolia

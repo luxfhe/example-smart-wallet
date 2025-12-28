@@ -1,11 +1,11 @@
 pragma solidity >=0.8.19 <0.9.0;
 
 // SPDX-License-Identifier: MIT
-// Fhenix Protocol (last updated v0.1.0) (token/FHERC20/IFHERC20.sol)
+// LuxFHE Protocol (last updated v0.1.0) (token/FHERC20/IFHERC20.sol)
 // Inspired by OpenZeppelin (https://github.com/OpenZeppelin/openzeppelin-contracts) (token/ERC20/IERC20.sol)
 
-import { PermissionV2 } from "@fhenixprotocol/contracts/access/PermissionedV2.sol";
-import { SealedUint } from "@fhenixprotocol/contracts/FHE.sol";
+import { PermissionV2 } from "@luxfhe/contracts/access/PermissionedV2.sol";
+import { SealedUint } from "@luxfhe/contracts/FHE.sol";
 
 /**
  * @dev Interface of the ERC-20 standard as defined in the ERC.

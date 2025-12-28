@@ -24,9 +24,9 @@ const deployMockFherc20s: DeployFunction = async function (hre: HardhatRuntimeEn
   const { deploy } = hre.deployments;
 
   // Fund the account before deploying.
-  if (hre.network.name === "localfhenix") {
+  if (hre.network.name === "localluxfhe") {
     if ((await hre.ethers.provider.getBalance(deployer)) === 0n) {
-      await hre.fhenixjs.getFunds(deployer);
+      await hre.luxfhejs.getFunds(deployer);
       console.log("Received tokens from the local faucet. Ready to deploy...");
     }
   }

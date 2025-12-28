@@ -9,9 +9,9 @@ import "solidity-coverage";
 import "@nomicfoundation/hardhat-verify";
 import "hardhat-deploy";
 import "hardhat-deploy-ethers";
-import "fhenix-hardhat-docker";
-import "fhenix-hardhat-plugin";
-import "fhenix-hardhat-network";
+import "@luxfhe/hardhat-docker";
+import "@luxfhe/hardhat-plugin";
+import "@luxfhe/hardhat-network";
 import "./tasks";
 
 // If not set, it uses ours Alchemy's default API key.
@@ -45,7 +45,7 @@ const config: HardhatUserConfig = {
     // View the networks that are pre-configured.
     // If the network you are looking for is not here you can add new network settings
     helium: {
-      url: "https://api.testnet.fhenix.zone:7747",
+      url: "https://api.testnet.luxfhe.zone:7747",
       chainId: 42069,
       accounts: [deployerPrivateKey],
     },

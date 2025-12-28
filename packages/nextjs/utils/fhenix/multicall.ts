@@ -63,40 +63,40 @@ export type SealedOutputAddress = {
   _utype: typeof TFHE_UTYPE.EADDRESS;
 };
 
-type FhenixMap<fhenixTransformable extends boolean = false> = {
+type LuxFHEMap<luxfheTransformable extends boolean = false> = {
   // Permission
-  "struct PermissionV2": fhenixTransformable extends true ? "populate-fhenix-permission" : PermissionV2;
+  "struct PermissionV2": luxfheTransformable extends true ? "populate-luxfhe-permission" : PermissionV2;
 
   // Output Structs
-  "struct SealedBool": fhenixTransformable extends true ? SealedOutputBool : boolean;
-  "struct SealedUint": fhenixTransformable extends true ? SealedOutputUint : bigint;
-  "struct SealedAddress": fhenixTransformable extends true ? SealedOutputAddress : Address;
+  "struct SealedBool": luxfheTransformable extends true ? SealedOutputBool : boolean;
+  "struct SealedUint": luxfheTransformable extends true ? SealedOutputUint : bigint;
+  "struct SealedAddress": luxfheTransformable extends true ? SealedOutputAddress : Address;
 };
-export type FhenixMapUnion = keyof FhenixMap;
+export type LuxFHEMapUnion = keyof LuxFHEMap;
 
 // BASE
 
-export type FhenixAbiParameterToPrimitiveType<
+export type LuxFHEAbiParameterToPrimitiveType<
   abiParameter extends AbiParameter | { name: string; type: unknown; internalType?: unknown },
   abiParameterKind extends AbiParameterKind = AbiParameterKind,
-  fhenixTransformable extends boolean = false,
+  luxfheTransformable extends boolean = false,
   // 2. Check if internalType matches user defined struct matches
-> = abiParameter["internalType"] extends FhenixMapUnion
-  ? FhenixMap<fhenixTransformable>[abiParameter["internalType"]]
+> = abiParameter["internalType"] extends LuxFHEMapUnion
+  ? LuxFHEMap<luxfheTransformable>[abiParameter["internalType"]]
   : AbiParameterToPrimitiveType<abiParameter, abiParameterKind>;
 
-export type FhenixAbiParametersToPrimitiveTypes<
+export type LuxFHEAbiParametersToPrimitiveTypes<
   abiParameters extends readonly AbiParameter[],
   abiParameterKind extends AbiParameterKind = AbiParameterKind,
-  fhenixTransformable extends boolean = false,
+  luxfheTransformable extends boolean = false,
 > = Prettify<{
   // TODO: Convert to labeled tuple so parameter names show up in autocomplete
   // e.g. [foo: string, bar: string]
   // https://github.com/microsoft/TypeScript/issues/44939
-  [key in keyof abiParameters]: FhenixAbiParameterToPrimitiveType<
+  [key in keyof abiParameters]: LuxFHEAbiParameterToPrimitiveType<
     abiParameters[key],
     abiParameterKind,
-    fhenixTransformable
+    luxfheTransformable
   >;
 }>;
 
@@ -150,62 +150,62 @@ export type Compute<type> = { [key in keyof type]: type[key] } & unknown;
 export type UnionCompute<type> = type extends object ? Compute<type> : type;
 export type UnionExactPartial<type> = type extends object ? ExactPartial<type> : type;
 
-export type UseFhenixReadContractParameters<
+export type UseLuxFHEReadContractParameters<
   abi extends Abi | readonly unknown[] = Abi,
   functionName extends ContractFunctionName<abi, "pure" | "view"> = ContractFunctionName<abi, "pure" | "view">,
-  fhenixTransformable extends boolean = false,
-  args extends FhenixContractFunctionArgs<
+  luxfheTransformable extends boolean = false,
+  args extends LuxFHEContractFunctionArgs<
     abi,
     "pure" | "view",
     functionName,
-    fhenixTransformable
-  > = FhenixContractFunctionArgs<abi, "pure" | "view", functionName, fhenixTransformable>,
+    luxfheTransformable
+  > = LuxFHEContractFunctionArgs<abi, "pure" | "view", functionName, luxfheTransformable>,
   config extends Config = Config,
-  selectData = FhenixContractFunctionReturnType<abi, "pure" | "view", functionName, fhenixTransformable, args>,
+  selectData = LuxFHEContractFunctionReturnType<abi, "pure" | "view", functionName, luxfheTransformable, args>,
 > = UnionCompute<
-  FhenixReadContractOptions<abi, functionName, fhenixTransformable, args, config> &
+  LuxFHEReadContractOptions<abi, functionName, luxfheTransformable, args, config> &
     ConfigParameter<config> &
     QueryParameter<
       selectData,
       ReadContractErrorType,
       selectData,
-      FhenixReadContractQueryKey<abi, functionName, fhenixTransformable, args, config>
+      LuxFHEReadContractQueryKey<abi, functionName, luxfheTransformable, args, config>
     >
 >;
 
-export type FhenixReadContractOptions<
+export type LuxFHEReadContractOptions<
   abi extends Abi | readonly unknown[],
   functionName extends ContractFunctionName<abi, "pure" | "view">,
-  fhenixTransformable extends boolean,
-  args extends FhenixContractFunctionArgs<abi, "pure" | "view", functionName, fhenixTransformable>,
+  luxfheTransformable extends boolean,
+  args extends LuxFHEContractFunctionArgs<abi, "pure" | "view", functionName, luxfheTransformable>,
   config extends Config,
 > = UnionExactPartial<
-  FhenixReadContractParameters<abi, functionName, fhenixTransformable, args> & ChainIdParameter<config>
+  LuxFHEReadContractParameters<abi, functionName, luxfheTransformable, args> & ChainIdParameter<config>
 > &
   ScopeKeyParameter;
 
-export type FhenixReadContractParameters<
+export type LuxFHEReadContractParameters<
   abi extends Abi | readonly unknown[] = Abi,
   functionName extends ContractFunctionName<abi, "pure" | "view"> = ContractFunctionName<abi, "pure" | "view">,
-  fhenixTransformable extends boolean = false,
-  args extends FhenixContractFunctionArgs<
+  luxfheTransformable extends boolean = false,
+  args extends LuxFHEContractFunctionArgs<
     abi,
     "pure" | "view",
     functionName,
-    fhenixTransformable
-  > = FhenixContractFunctionArgs<abi, "pure" | "view", functionName, fhenixTransformable>,
+    luxfheTransformable
+  > = LuxFHEContractFunctionArgs<abi, "pure" | "view", functionName, luxfheTransformable>,
 > = UnionEvaluate<
   Pick<CallParameters, "account" | "blockNumber" | "blockTag" | "factory" | "factoryData" | "stateOverride">
 > &
-  FhenixContractFunctionParameters<abi, "pure" | "view", functionName, fhenixTransformable, args, boolean>;
+  LuxFHEContractFunctionParameters<abi, "pure" | "view", functionName, luxfheTransformable, args, boolean>;
 
-export function fhenixReadContractQueryKey<
+export function luxfheReadContractQueryKey<
   config extends Config,
   const abi extends Abi | readonly unknown[],
   functionName extends ContractFunctionName<abi, "pure" | "view">,
-  fhenixTransformable extends boolean,
-  args extends FhenixContractFunctionArgs<abi, "pure" | "view", functionName, fhenixTransformable>,
->(options: FhenixReadContractOptions<abi, functionName, fhenixTransformable, args, config> = {} as any) {
+  luxfheTransformable extends boolean,
+  args extends LuxFHEContractFunctionArgs<abi, "pure" | "view", functionName, luxfheTransformable>,
+>(options: LuxFHEReadContractOptions<abi, functionName, luxfheTransformable, args, config> = {} as any) {
   const { abi: _, ...rest } = options;
   return ["readContract", filterQueryOptions(rest)] as const;
 }
@@ -264,55 +264,55 @@ export function filterQueryOptions<type extends Record<string, unknown>>(options
   return rest as type;
 }
 
-export type FhenixReadContractQueryKey<
+export type LuxFHEReadContractQueryKey<
   abi extends Abi | readonly unknown[],
   functionName extends ContractFunctionName<abi, "pure" | "view">,
-  fhenixTransformable extends boolean,
-  args extends FhenixContractFunctionArgs<abi, "pure" | "view", functionName, fhenixTransformable>,
+  luxfheTransformable extends boolean,
+  args extends LuxFHEContractFunctionArgs<abi, "pure" | "view", functionName, luxfheTransformable>,
   config extends Config,
-> = ReturnType<typeof fhenixReadContractQueryKey<config, abi, functionName, fhenixTransformable, args>>;
+> = ReturnType<typeof luxfheReadContractQueryKey<config, abi, functionName, luxfheTransformable, args>>;
 
-export type UseFhenixReadContractReturnType<
+export type UseLuxFHEReadContractReturnType<
   abi extends Abi | readonly unknown[] = Abi,
   functionName extends ContractFunctionName<abi, "pure" | "view"> = ContractFunctionName<abi, "pure" | "view">,
-  fhenixTransformable extends boolean = false,
-  args extends FhenixContractFunctionArgs<
+  luxfheTransformable extends boolean = false,
+  args extends LuxFHEContractFunctionArgs<
     abi,
     "pure" | "view",
     functionName,
-    fhenixTransformable
-  > = FhenixContractFunctionArgs<abi, "pure" | "view", functionName, fhenixTransformable>,
-  selectData = FhenixContractFunctionReturnType<abi, "pure" | "view", functionName, fhenixTransformable, args>,
+    luxfheTransformable
+  > = LuxFHEContractFunctionArgs<abi, "pure" | "view", functionName, luxfheTransformable>,
+  selectData = LuxFHEContractFunctionReturnType<abi, "pure" | "view", functionName, luxfheTransformable, args>,
 > = UseQueryReturnType<selectData, ReadContractErrorType> & PermittedParameter;
 
 // EXT
 
-export type FhenixContractFunctionArgs<
+export type LuxFHEContractFunctionArgs<
   abi extends Abi | readonly unknown[] = Abi,
   mutability extends AbiStateMutability = AbiStateMutability,
   functionName extends ContractFunctionName<abi, mutability> = ContractFunctionName<abi, mutability>,
-  fhenixTransformable extends boolean = false,
-> = FhenixAbiParametersToPrimitiveTypes<
+  luxfheTransformable extends boolean = false,
+> = LuxFHEAbiParametersToPrimitiveTypes<
   ExtractAbiFunction<abi extends Abi ? abi : Abi, functionName, mutability>["inputs"],
   "inputs",
-  fhenixTransformable
+  luxfheTransformable
 > extends infer args
   ? [args] extends [never]
     ? readonly unknown[]
     : args
   : readonly unknown[];
 
-export type FhenixContractFunctionParameters<
+export type LuxFHEContractFunctionParameters<
   abi extends Abi | readonly unknown[] = Abi,
   mutability extends AbiStateMutability = AbiStateMutability,
   functionName extends ContractFunctionName<abi, mutability> = ContractFunctionName<abi, mutability>,
-  fhenixTransformable extends boolean = false,
-  args extends FhenixContractFunctionArgs<
+  luxfheTransformable extends boolean = false,
+  args extends LuxFHEContractFunctionArgs<
     abi,
     mutability,
     functionName,
-    fhenixTransformable
-  > = FhenixContractFunctionArgs<abi, mutability, functionName, fhenixTransformable>,
+    luxfheTransformable
+  > = LuxFHEContractFunctionArgs<abi, mutability, functionName, luxfheTransformable>,
   deployless extends boolean = false,
   ///
   allFunctionNames = ContractFunctionName<abi, mutability>,
@@ -328,24 +328,24 @@ export type FhenixContractFunctionParameters<
   // eslint-disable-next-line @typescript-eslint/ban-types
 } & (deployless extends true ? { address?: undefined; code: Hex } : { address: Address });
 
-export type FhenixContractFunctionReturnType<
+export type LuxFHEContractFunctionReturnType<
   abi extends Abi | readonly unknown[] = Abi,
   mutability extends AbiStateMutability = AbiStateMutability,
   functionName extends ContractFunctionName<abi, mutability> = ContractFunctionName<abi, mutability>,
-  fhenixTransformable extends boolean = false,
-  args extends FhenixContractFunctionArgs<
+  luxfheTransformable extends boolean = false,
+  args extends LuxFHEContractFunctionArgs<
     abi,
     mutability,
     functionName,
-    fhenixTransformable
-  > = FhenixContractFunctionArgs<abi, mutability, functionName, fhenixTransformable>,
+    luxfheTransformable
+  > = LuxFHEContractFunctionArgs<abi, mutability, functionName, luxfheTransformable>,
 > = abi extends Abi
   ? Abi extends abi
     ? unknown
-    : FhenixAbiParametersToPrimitiveTypes<
-        FhenixExtractAbiFunctionForArgs<abi, mutability, functionName, fhenixTransformable, args>["outputs"],
+    : LuxFHEAbiParametersToPrimitiveTypes<
+        LuxFHEExtractAbiFunctionForArgs<abi, mutability, functionName, luxfheTransformable, args>["outputs"],
         "outputs",
-        fhenixTransformable
+        luxfheTransformable
       > extends infer types
     ? types extends readonly []
       ? void
@@ -355,42 +355,42 @@ export type FhenixContractFunctionReturnType<
     : never
   : unknown;
 
-export type FhenixExtractAbiFunctionForArgs<
+export type LuxFHEExtractAbiFunctionForArgs<
   abi extends Abi,
   mutability extends AbiStateMutability,
   functionName extends ContractFunctionName<abi, mutability>,
-  fhenixTransformable extends boolean,
-  args extends FhenixContractFunctionArgs<abi, mutability, functionName, fhenixTransformable>,
+  luxfheTransformable extends boolean,
+  args extends LuxFHEContractFunctionArgs<abi, mutability, functionName, luxfheTransformable>,
 > = ExtractAbiFunction<abi, functionName, mutability> extends infer abiFunction extends AbiFunction
   ? IsUnion<abiFunction> extends true // narrow overloads using `args` by converting to tuple and filtering out overloads that don't match
     ? UnionToTuple<abiFunction> extends infer abiFunctions extends readonly AbiFunction[]
       ? // convert back to union (removes `never` tuple entries)
-        { [k in keyof abiFunctions]: CheckArgs<abiFunctions[k], args, fhenixTransformable> }[number]
+        { [k in keyof abiFunctions]: CheckArgs<abiFunctions[k], args, luxfheTransformable> }[number]
       : never
     : abiFunction
   : never;
 type CheckArgs<
   abiFunction extends AbiFunction,
   args,
-  fhenixTransformable extends boolean,
+  luxfheTransformable extends boolean,
   ///
-  targetArgs extends FhenixAbiParametersToPrimitiveTypes<
+  targetArgs extends LuxFHEAbiParametersToPrimitiveTypes<
     abiFunction["inputs"],
     "inputs",
-    fhenixTransformable
-  > = FhenixAbiParametersToPrimitiveTypes<abiFunction["inputs"], "inputs", fhenixTransformable>,
+    luxfheTransformable
+  > = LuxFHEAbiParametersToPrimitiveTypes<abiFunction["inputs"], "inputs", luxfheTransformable>,
 > = (readonly [] extends args ? readonly [] : args) extends targetArgs // fallback to `readonly []` if `args` has no value (e.g. `args` property not provided)
   ? abiFunction
   : never;
 
-export type FhenixMulticallContracts<
+export type LuxFHEMulticallContracts<
   contracts extends readonly unknown[],
   options extends {
     mutability: AbiStateMutability;
     optional?: boolean;
     properties?: Record<string, any>;
   } = { mutability: AbiStateMutability },
-  fhenixTransformable extends boolean = false,
+  luxfheTransformable extends boolean = false,
   ///
   result extends readonly any[] = [],
 > = contracts extends readonly [] // no contracts, return empty
@@ -400,22 +400,22 @@ export type FhenixMulticallContracts<
       ...result,
       MaybePartial<
         Prettify<
-          GetFhenixMulticallContractParameters<contract, options["mutability"], fhenixTransformable> &
+          GetLuxFHEMulticallContractParameters<contract, options["mutability"], luxfheTransformable> &
             options["properties"]
         >,
         options["optional"]
       >,
     ]
   : contracts extends readonly [infer contract, ...infer rest] // grab first contract and recurse through `rest`
-  ? FhenixMulticallContracts<
+  ? LuxFHEMulticallContracts<
       [...rest],
       options,
-      fhenixTransformable,
+      luxfheTransformable,
       [
         ...result,
         MaybePartial<
           Prettify<
-            GetFhenixMulticallContractParameters<contract, options["mutability"], fhenixTransformable> &
+            GetLuxFHEMulticallContractParameters<contract, options["mutability"], luxfheTransformable> &
               options["properties"]
           >,
           options["optional"]
@@ -431,10 +431,10 @@ export type FhenixMulticallContracts<
   : // Fallback
     readonly MaybePartial<Prettify<ContractFunctionParameters & options["properties"]>, options["optional"]>[];
 
-export type FhenixMulticallResults<
+export type LuxFHEMulticallResults<
   contracts extends readonly unknown[] = readonly ContractFunctionParameters[],
   allowFailure extends boolean = true,
-  fhenixTransformable extends boolean = false,
+  luxfheTransformable extends boolean = false,
   options extends {
     error?: Error;
     mutability: AbiStateMutability;
@@ -447,21 +447,21 @@ export type FhenixMulticallResults<
   ? [
       ...result,
       MulticallResponse<
-        GetFhenixMulticallContractReturnType<contract, options["mutability"], fhenixTransformable>,
+        GetLuxFHEMulticallContractReturnType<contract, options["mutability"], luxfheTransformable>,
         options["error"],
         allowFailure
       >,
     ]
   : contracts extends readonly [infer contract, ...infer rest] // grab first contract and recurse through `rest`
-  ? FhenixMulticallResults<
+  ? LuxFHEMulticallResults<
       [...rest],
       allowFailure,
-      fhenixTransformable,
+      luxfheTransformable,
       options,
       [
         ...result,
         MulticallResponse<
-          GetFhenixMulticallContractReturnType<contract, options["mutability"], fhenixTransformable>,
+          GetLuxFHEMulticallContractReturnType<contract, options["mutability"], luxfheTransformable>,
           options["error"],
           allowFailure
         >,
@@ -473,7 +473,7 @@ export type FhenixMulticallResults<
   // use this to infer the param types in the case of Array.map() argument
   contracts extends readonly (infer contract extends ContractFunctionParameters)[]
   ? MulticallResponse<
-      GetFhenixMulticallContractReturnType<contract, options["mutability"], fhenixTransformable>,
+      GetLuxFHEMulticallContractReturnType<contract, options["mutability"], luxfheTransformable>,
       options["error"],
       allowFailure
     >[]
@@ -481,10 +481,10 @@ export type FhenixMulticallResults<
     MulticallResponse<unknown, options["error"], allowFailure>[];
 
 // infer contract parameters from `unknown`
-export type GetFhenixMulticallContractParameters<
+export type GetLuxFHEMulticallContractParameters<
   contract,
   mutability extends AbiStateMutability,
-  fhenixTransformable extends boolean = false,
+  luxfheTransformable extends boolean = false,
 > = contract extends {
   abi: infer abi extends Abi;
 } // 1. Check if `abi` is const-asserted or defined inline
@@ -494,21 +494,21 @@ export type GetFhenixMulticallContractParameters<
     }
     ? // 1aa. Check if `args` is valid for `abi` and `functionName`
       contract extends {
-        args: infer args extends FhenixContractFunctionArgs<abi, mutability, functionName, fhenixTransformable>;
+        args: infer args extends LuxFHEContractFunctionArgs<abi, mutability, functionName, luxfheTransformable>;
       }
-      ? FhenixContractFunctionParameters<abi, mutability, functionName, fhenixTransformable, args> // `args` valid, pass through
-      : FhenixContractFunctionParameters<abi, mutability, functionName, fhenixTransformable> // invalid `args`
+      ? LuxFHEContractFunctionParameters<abi, mutability, functionName, luxfheTransformable, args> // `args` valid, pass through
+      : LuxFHEContractFunctionParameters<abi, mutability, functionName, luxfheTransformable> // invalid `args`
     : // 1b. `functionName` is invalid, check if `abi` is declared as `Abi`
     Abi extends abi
-    ? FhenixContractFunctionParameters // `abi` declared as `Abi`, unable to infer types further
+    ? LuxFHEContractFunctionParameters // `abi` declared as `Abi`, unable to infer types further
     : // `abi` is const-asserted or defined inline, infer types for `functionName` and `args`
-      FhenixContractFunctionParameters<abi, mutability>
-  : FhenixContractFunctionParameters<readonly unknown[]>; // invalid `contract['abi']`, set to `readonly unknown[]`
+      LuxFHEContractFunctionParameters<abi, mutability>
+  : LuxFHEContractFunctionParameters<readonly unknown[]>; // invalid `contract['abi']`, set to `readonly unknown[]`
 
-type GetFhenixMulticallContractReturnType<
+type GetLuxFHEMulticallContractReturnType<
   contract,
   mutability extends AbiStateMutability,
-  fhenixTransformable extends boolean = false,
+  luxfheTransformable extends boolean = false,
 > = contract extends {
   abi: infer abi extends Abi;
 } // 1. Check if `abi` is const-asserted or defined inline
@@ -518,21 +518,21 @@ type GetFhenixMulticallContractReturnType<
     }
     ? // Check if `args` is valid for `abi` and `functionName`
       contract extends {
-        args: infer args extends FhenixContractFunctionArgs<abi, mutability, functionName, fhenixTransformable>;
+        args: infer args extends LuxFHEContractFunctionArgs<abi, mutability, functionName, luxfheTransformable>;
       }
-      ? FhenixContractFunctionReturnType<abi, mutability, functionName, fhenixTransformable, args> // `args` valid, pass through
-      : FhenixContractFunctionReturnType<abi, mutability, functionName> // invalid `args`
-    : FhenixContractFunctionReturnType<abi, mutability> // Invalid `functionName`
-  : FhenixContractFunctionReturnType; // invalid `contract['abi']` (not const-asserted or declared as `Abi`)
+      ? LuxFHEContractFunctionReturnType<abi, mutability, functionName, luxfheTransformable, args> // `args` valid, pass through
+      : LuxFHEContractFunctionReturnType<abi, mutability, functionName> // invalid `args`
+    : LuxFHEContractFunctionReturnType<abi, mutability> // Invalid `functionName`
+  : LuxFHEContractFunctionReturnType; // invalid `contract['abi']` (not const-asserted or declared as `Abi`)
 
-export type UseFhenixReadContractsParameters<
+export type UseLuxFHEReadContractsParameters<
   contracts extends readonly unknown[] = readonly ContractFunctionParameters[],
   allowFailure extends boolean = true,
-  fhenixTransformable extends boolean = false,
+  luxfheTransformable extends boolean = false,
   config extends Config = Config,
-  selectData = FhenixMulticallResults<contracts, allowFailure, false>,
+  selectData = LuxFHEMulticallResults<contracts, allowFailure, false>,
 > = Compute<
-  FhenixReadContractsOptions<contracts, allowFailure, config, fhenixTransformable> &
+  LuxFHEReadContractsOptions<contracts, allowFailure, config, luxfheTransformable> &
     ConfigParameter<config> &
     QueryParameter<
       ReadContractsQueryFnData<contracts, allowFailure>,
@@ -542,36 +542,36 @@ export type UseFhenixReadContractsParameters<
     >
 >;
 
-export type FhenixReadContractsOptions<
+export type LuxFHEReadContractsOptions<
   contracts extends readonly unknown[],
   allowFailure extends boolean,
   config extends Config,
-  fhenixTransformable extends boolean = false,
+  luxfheTransformable extends boolean = false,
 > = ExactPartial<
-  FhenixMulticallParameters<
+  LuxFHEMulticallParameters<
     contracts,
     allowFailure,
     { optional: true; properties: ChainIdParameter<config> },
-    fhenixTransformable
+    luxfheTransformable
   >
 > &
   ScopeKeyParameter;
 
-export type FhenixMulticallParameters<
+export type LuxFHEMulticallParameters<
   contracts extends readonly unknown[] = readonly ContractFunctionParameters[],
   allowFailure extends boolean = true,
   options extends {
     optional?: boolean;
     properties?: Record<string, any>;
   } = {},
-  fhenixTransformable extends boolean = false,
+  luxfheTransformable extends boolean = false,
 > = Pick<CallParameters, "blockNumber" | "blockTag" | "stateOverride"> & {
   allowFailure?: allowFailure | boolean | undefined;
   batchSize?: number | undefined;
-  contracts: FhenixMulticallContracts<
+  contracts: LuxFHEMulticallContracts<
     Narrow<contracts>,
     { mutability: AbiStateMutability } & options,
-    fhenixTransformable
+    luxfheTransformable
   >;
   multicallAddress?: Address | undefined;
 };
@@ -582,16 +582,16 @@ export type UseQueryReturnType<data = unknown, error = DefaultError> = Compute<
   }
 >;
 
-export type UseFhenixReadContractsReturnType<
+export type UseLuxFHEReadContractsReturnType<
   contracts extends readonly unknown[] = readonly ContractFunctionParameters[],
   allowFailure extends boolean = true,
-  selectData = FhenixMulticallReturnType<contracts, allowFailure>,
+  selectData = LuxFHEMulticallReturnType<contracts, allowFailure>,
 > = UseQueryReturnType<selectData, ReadContractsErrorType>;
 
-export type FhenixMulticallReturnType<
+export type LuxFHEMulticallReturnType<
   contracts extends readonly unknown[] = readonly ContractFunctionParameters[],
   allowFailure extends boolean = true,
   options extends {
     error?: Error;
   } = { error: Error },
-> = FhenixMulticallResults<Narrow<contracts>, allowFailure, false, { mutability: AbiStateMutability } & options>;
+> = LuxFHEMulticallResults<Narrow<contracts>, allowFailure, false, { mutability: AbiStateMutability } & options>;
