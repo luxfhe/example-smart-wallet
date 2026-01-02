@@ -3734,10 +3734,10 @@ const deployedContracts = {
         transfer: "@openzeppelin/contracts/token/ERC20/ERC20.sol",
         transferFrom: "@openzeppelin/contracts/token/ERC20/ERC20.sol",
         checkPermissionSatisfies:
-          "@luxfheprotocol/contracts/access/PermissionedV2.sol",
-        eip712Domain: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
-        project: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
-        version: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
+          "@luxfhe/contracts/access/PermissionedV2.sol",
+        eip712Domain: "@luxfhe/contracts/access/PermissionedV2.sol",
+        project: "@luxfhe/contracts/access/PermissionedV2.sol",
+        version: "@luxfhe/contracts/access/PermissionedV2.sol",
       },
     },
     LINK: {
@@ -25743,10 +25743,10 @@ const deployedContracts = {
         transfer: "@openzeppelin/contracts/token/ERC20/ERC20.sol",
         transferFrom: "@openzeppelin/contracts/token/ERC20/ERC20.sol",
         checkPermissionSatisfies:
-          "@luxfheprotocol/contracts/access/PermissionedV2.sol",
-        eip712Domain: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
-        project: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
-        version: "@luxfheprotocol/contracts/access/PermissionedV2.sol",
+          "@luxfhe/contracts/access/PermissionedV2.sol",
+        eip712Domain: "@luxfhe/contracts/access/PermissionedV2.sol",
+        project: "@luxfhe/contracts/access/PermissionedV2.sol",
+        version: "@luxfhe/contracts/access/PermissionedV2.sol",
       },
     },
     LINK: {

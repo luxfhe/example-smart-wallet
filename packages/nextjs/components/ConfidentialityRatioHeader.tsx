@@ -1,7 +1,7 @@
 "use client";
 
-import { processUnsealables } from "~~/utils/luxfhe/unsealable";
-import { UnsealableDisplay } from "~~/components/luxfhe/UnsealableDisplay";
+import { processUnsealables } from "~~/utils/fhenix/unsealable";
+import { UnsealableDisplay } from "~~/components/fhenix/UnsealableDisplay";
 import { usePortfolioSummaryData } from "~~/services/store/tokensStore";
 
 export const ConfidentialityRatioHeader = () => {

@@ -10,7 +10,7 @@ import { CheckCircleIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outl
 import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
-import { luxfheLocal } from "~~/utils/luxfhe/networks";
+import { luxfheLocal } from "~~/utils/fhenix/networks";
 
 type AddressProps = {
   address?: AddressType;

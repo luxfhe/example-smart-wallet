@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { expect } from "chai";
-import hre, { ethers, luxfhejs } from "hardhat";
+import hre, { ethers, luxfhe } from "hardhat";
 import { Counter, PermitV2 } from "../typechain-types";
 import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
 import { getTokensFromFaucet, unsealMockFheOpsSealed } from "./utils";
@@ -59,13 +59,13 @@ describe("Counter", function () {
 
       // Before sending the amount to count to the Counter contract
       // It must first be encrypted outside the contract (within this test / frontend)
-      const encToCount = await luxfhejs.encrypt_uint32(toCount);
+      const encToCount = await luxfhe.encrypt_uint32(toCount);
 
       // Add to the counter
       await counter.connect(signer).add(encToCount);
 
       const sealedCountedAmount = await counter.connect(signer).getCounterPermitSealed(signerCounterPermission);
-      const unsealedCountedAmount = luxfhejs.unseal(counterAddress, sealedCountedAmount.data, signer.address);
+      const unsealedCountedAmount = luxfhe.unseal(counterAddress, sealedCountedAmount.data, signer.address);
 
       expect(Number(unsealedCountedAmount) === toCount);
       expect(unsealedCountedAmount).to.equal(toCount, "The counted amount should increase by toCount");

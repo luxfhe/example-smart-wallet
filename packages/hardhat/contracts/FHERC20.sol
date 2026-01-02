@@ -5,8 +5,8 @@ pragma solidity >=0.8.19 <0.9.0;
 import "@openzeppelin/contracts/utils/Strings.sol";
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import { IFHERC20 } from "./IFHERC20.sol";
-import { PermissionedV2, PermissionV2 } from "@luxfhe/contracts/access/PermissionedV2.sol";
-import { SealedUint } from "@luxfhe/contracts/FHE.sol";
+import { PermissionedV2, PermissionV2 } from "@luxfi/contracts/fhe/access/PermissionedV2.sol";
+import { SealedUint } from "@luxfi/contracts/fhe/FHE.sol";
 
 /**
  * Version of the FHERC20 able to be deployed on non-FHE chains
@@ -70,7 +70,7 @@ contract FHERC20 is IFHERC20, ERC20, PermissionedV2 {
 		returns (SealedUint memory)
 	{
 		return
-			SealedUint({ data: Strings.toString(_encTotalSupply), utype: 4 });
+			SealedUint({ data: bytes(Strings.toString(_encTotalSupply)), utype: 4 });
 	}
 
 	/**
@@ -104,7 +104,7 @@ contract FHERC20 is IFHERC20, ERC20, PermissionedV2 {
 	{
 		return
 			SealedUint({
-				data: Strings.toString(_encBalances[permission.issuer]),
+				data: bytes(Strings.toString(_encBalances[permission.issuer])),
 				utype: 4
 			});
 	}
@@ -176,7 +176,7 @@ contract FHERC20 is IFHERC20, ERC20, PermissionedV2 {
 		}
 		return
 			SealedUint({
-				data: Strings.toString(_encAllowances[owner][spender]),
+				data: bytes(Strings.toString(_encAllowances[owner][spender])),
 				utype: 4
 			});
 	}

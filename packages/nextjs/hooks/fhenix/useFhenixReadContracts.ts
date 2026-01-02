@@ -4,7 +4,7 @@ import {
   LuxFHEMulticallReturnType,
   UseLuxFHEReadContractsParameters,
   UseLuxFHEReadContractsReturnType,
-} from "~~/utils/LuxFHE/multicall";
+} from "~~/utils/fhenix/multicall";
 import { useAccount } from "@account-kit/react";
 import { useLuxFHEPermit } from "~~/permits/hooks";
 import { Abi, ContractFunctionName } from "viem";

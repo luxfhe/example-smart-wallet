@@ -12,7 +12,7 @@ import {
   SerializedPermitV2,
 } from "./types";
 import { FullyFormedPermitV2Validator, PermitV2ParamsValidator } from "./permitV2.z";
-import { GenerateSealingKey, SealingKey } from "luxfhejs";
+import { GenerateSealingKey, SealingKey } from "@luxfhe/sdk";
 import { getAddress, keccak256, toHex, zeroAddress } from "viem";
 import {
   getSignatureDomain,

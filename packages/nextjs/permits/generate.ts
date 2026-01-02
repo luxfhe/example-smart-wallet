@@ -1,6 +1,6 @@
-import { EIP712Message } from "luxfhejs";
+import { EIP712Message } from "@luxfhe/sdk";
 import { PermissionV2 } from "./types";
-import { EIP712Types } from "luxfhejs";
+import { EIP712Types } from "@luxfhe/sdk";
 import { zeroAddress } from "viem";
 
 const PermitV2SignatureAllFields = [
