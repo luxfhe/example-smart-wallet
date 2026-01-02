@@ -1,9 +1,9 @@
 "use client";
 
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
-import { processUnsealables, Unsealable } from "~~/utils/luxfhe/unsealable";
+import { processUnsealables, Unsealable } from "~~/utils/fhenix/unsealable";
 import React from "react";
-import { UnsealableDisplay, UnsealablesDisplay } from "~~/components/luxfhe/UnsealableDisplay";
+import { UnsealableDisplay, UnsealablesDisplay } from "~~/components/fhenix/UnsealableDisplay";
 import { DerivedTokenData } from "~~/services/store/tokensStore";
 import { bigintFixed } from "~~/utils/scaffold-eth/bigint";
 import { MockTokenMintModal } from "./MockTokenMintModal";

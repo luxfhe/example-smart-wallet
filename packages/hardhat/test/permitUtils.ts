@@ -7,7 +7,7 @@ import {
   PermitSigner,
   SealingKey,
   SupportedProvider,
-} from "luxfhejs";
+} from "@luxfhe/sdk";
 import { PermissionV2Struct } from "../typechain-types/contracts/Counter";
 
 export const hours = 60 * 60;

@@ -5,11 +5,11 @@ import type { TaskArguments } from "hardhat/types";
 task("task:addCount")
   .addParam("amount", "Amount to add to the counter (plaintext number)", "1")
   .setAction(async function (taskArguments: TaskArguments, hre) {
-    const { luxfhejs, ethers, deployments } = hre;
+    const { luxfhe, ethers, deployments } = hre;
     const [signer] = await ethers.getSigners();
 
     if ((await ethers.provider.getBalance(signer.address)).toString() === "0") {
-      await luxfhejs.getFunds(signer.address);
+      await luxfhe.getFunds(signer.address);
     }
 
     const amountToAdd = Number(taskArguments.amount);
@@ -19,7 +19,7 @@ task("task:addCount")
 
     const contract = await ethers.getContractAt("Counter", Counter.address);
 
-    const encryptedAmount = await luxfhejs.encrypt_uint32(amountToAdd);
+    const encryptedAmount = await luxfhe.encrypt_uint32(amountToAdd);
 
     const contractWithSigner = contract.connect(signer) as unknown as Counter;
 

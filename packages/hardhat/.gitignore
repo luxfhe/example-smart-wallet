@@ -22,7 +22,7 @@ cache-zk
 
 # deployments
 deployments/localhost
-deployments/localfhenix
+deployments/localluxfhe
 
 # other
 temp

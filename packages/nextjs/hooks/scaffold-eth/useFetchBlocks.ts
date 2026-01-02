@@ -10,7 +10,7 @@ import {
   webSocket,
 } from "viem";
 import { decodeTransactionData } from "~~/utils/scaffold-eth";
-import { LuxFHE_LOCAL_WEBSOCKETS_URL, luxfheLocal } from "~~/utils/luxfhe/networks";
+import { LuxFHE_LOCAL_WEBSOCKETS_URL, luxfheLocal } from "~~/utils/fhenix/networks";
 
 const BLOCKS_PER_PAGE = 20;
 
