@@ -1,8 +1,8 @@
-import { useLuxFHEReadContracts } from "./useFhenixReadContracts";
+import { useLuxFHEReadContracts } from "./useLuxFHEReadContracts";
 import { useDeployedContractInfo } from "../scaffold-eth";
 import { useEffect } from "react";
 import { TokenData, useTokensStore } from "~~/services/store/tokensStore";
-import { processUnsealables } from "~~/utils/fhenix/unsealable";
+import { processUnsealables } from "~~/utils/fhe/unsealable";
 import { useLuxFHEPermit } from "~~/permits/hooks";
 import { useAccount } from "@account-kit/react";
 

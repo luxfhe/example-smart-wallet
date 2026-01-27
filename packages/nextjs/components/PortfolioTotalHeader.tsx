@@ -1,7 +1,7 @@
 "use client";
 
-import { processUnsealables } from "~~/utils/fhenix/unsealable";
-import { UnsealableDisplay } from "~~/components/fhenix/UnsealableDisplay";
+import { processUnsealables } from "~~/utils/fhe/unsealable";
+import { UnsealableDisplay } from "~~/components/fhe/UnsealableDisplay";
 import { usePortfolioSummaryData } from "~~/services/store/tokensStore";
 
 export const PortfolioTotalHeader = () => {
